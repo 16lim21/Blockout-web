@@ -2,7 +2,7 @@
     "name": "client",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://github.com/16lim21/Blockout-backend#readme",
+    "homepage": "https://github.com/16lim21/Blockout-web",
     "dependencies": {
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.5.0",
