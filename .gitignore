@@ -14,7 +14,7 @@
 **/coverage
 
 # production
-**/build
+# **/build
 
 # Client Frontend
 client/README.md
