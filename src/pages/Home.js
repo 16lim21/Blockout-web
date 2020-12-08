@@ -2,7 +2,7 @@
  * Home page that users see once they have logged in
  * @exports Home
  */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GoogleButton from "../components/GoogleButton";
 import axios from "axios";
 import styled from "styled-components";
@@ -57,10 +57,13 @@ const NewEvent = styled.button`
 
 const Home = () => {
     const [events, setEvents] = useState([]);
+    useEffect(() => {
+        getData()
+    }, [])
 
     const getData = () => {
         axios
-            .get(process.env.REACT_APP_API_URL + "blockout/events", {
+            .get(process.env.REACT_APP_API_URL + "blockout/todo", {
                 withCredentials: true,
             })
             .then((response) => {
