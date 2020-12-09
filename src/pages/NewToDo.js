@@ -6,30 +6,26 @@ import React, {useState} from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import DTPicker from "../components/DTPicker";
 
 const NewToDoPage = styled.div``
 
 const Container = styled.div`
-    position: relative;
-    padding: 2rem;
-    padding-left: 3.25rem;
-    padding-right: 3.25rem;
-    margin: 2.5rem;
-    font-family: 'Source Sans Pro', sans-serif;
+    margin: 5rem;
+    display: flex;
+    flex-direction: column;
 `;
 
 const Header = styled.div`
-    display: flex;
-    justify-content: center;
+    align-self: center;
     font-size: 3.5rem;
     font-weight: 600;
-    color: #FFFFFF;
+    color: white;
 `;
 
 const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 `;
 
 const StyledInput = styled.input`
@@ -42,18 +38,20 @@ const StyledInput = styled.input`
     border-width: 0 0 2px;
     outline: none;
     font-size: 1.5rem;
+    -webkit-appearance: none;
 
     &:required{
         box-shadow: none;
+    }
+    &[type=number]{
+        -moz-appearance: textfield;
     }
 `;
 
 const Submit = styled.input`
     padding: 0.875rem;
     width: 11.25rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: auto;
+    margin: 1rem 0 1rem auto;
     border: 0.125rem solid #FFFFFF;
     border-radius: 1.5rem;
     font-size: 1.5rem;
@@ -80,6 +78,9 @@ const NewToDo = () => {
     const submit = (event) => {
         event.preventDefault()
         history.goBack()
+        setName('')
+        setDuration('')
+        setDueDate('')
     }
 
     return (
@@ -97,6 +98,7 @@ const NewToDo = () => {
                                 onChange={event => setDuration(event.target.value)}
                                 value={duration}
                                 required/>
+                    <DTPicker setDueDate={setDueDate}/>
                     <Submit type="submit" value="Create"/>
                 </StyledForm>
             </Container>

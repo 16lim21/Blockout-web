@@ -1,0 +1,13 @@
+.DTPicker {
+    background: transparent;
+    border-width: 0 0 2px;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    margin: 1rem 0;
+    outline: none;
+}
+
+.DTPicker:required{
+    box-shadow: none;
+}

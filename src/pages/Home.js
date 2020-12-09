@@ -13,11 +13,11 @@ const Background = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: 'Source Sans Pro', sans-serif;
 `
 
 const Home = () => {
     let match = useRouteMatch()
-    console.log(match.path)
     return (
         <Background>
             <Switch>
