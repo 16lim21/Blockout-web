@@ -4,13 +4,18 @@
  */
 
 import React from "react";
-import Router from "./Router";
+import { Switch, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
 import AuthProvider from "./contexts/useAuthContext";
 
 const App = () => {
     return (
         <AuthProvider>
-            <Router />
+            <Switch>
+                <Route exact path="/" component={Login}></Route>
+                <Route path="/home" component={Home}></Route>
+            </Switch>
         </AuthProvider>
     );
 };
