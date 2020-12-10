@@ -24,6 +24,7 @@ const RowHeaders = styled.div`
     flex-direction: row;
     align-items: flex-end;
     color: white;
+    padding: 0 1rem;
 `
 
 const EventTitle = styled.div`
@@ -43,6 +44,7 @@ const Status = styled.div`
 `
 
 const NewEvent = styled.button`
+    position: absolute;
     background: white;
     padding: 5px 8px;
     border: 2px solid #B9D9EB;
