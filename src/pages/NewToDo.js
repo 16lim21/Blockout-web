@@ -72,15 +72,30 @@ const NewToDo = () => {
 
     const [name, setName] = useState('')
     const [duration, setDuration] = useState('')
-    const [dueDate, setDueDate] = useState('')
+    const [deadline, setDeadline] = useState('')
+    const [buttonText, setButtonText] = useState('Create')
     let history = useHistory();
 
     const submit = (event) => {
         event.preventDefault()
-        history.goBack()
-        setName('')
-        setDuration('')
-        setDueDate('')
+        setButtonText('Creating..')
+        let data = {
+            name: name,
+            duration: duration,
+            deadline: deadline,
+        }
+
+        axios.post(process.env.REACT_APP_API_URL + "blockout/todo", data)
+            .then(response => {
+                history.goBack()
+                setName('')
+                setDuration('')
+                setDeadline('')
+            })
+            .catch(() => {
+                setButtonText("Error, Redo!")
+                console.log('message not sent')
+            })
     }
 
     return (
@@ -98,8 +113,8 @@ const NewToDo = () => {
                                 onChange={event => setDuration(event.target.value)}
                                 value={duration}
                                 required/>
-                    <DTPicker setDueDate={setDueDate}/>
-                    <Submit type="submit" value="Create"/>
+                    <DTPicker setDeadline={setDeadline}/>
+                    <Submit type="submit" value={buttonText}/>
                 </StyledForm>
             </Container>
         </NewToDoPage>

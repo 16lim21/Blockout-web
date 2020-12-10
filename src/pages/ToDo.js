@@ -4,6 +4,7 @@
  */
 import React, { useState, useEffect } from "react";
 import GoogleButton from "../components/GoogleButton";
+import ToDoEvent from "../components/ToDoEvent"
 import axios from "axios";
 import styled from "styled-components";
 import { useHistory, useRouteMatch } from "react-router-dom";
@@ -89,9 +90,12 @@ const ToDo = () => {
                 </RowHeaders>
                 <div>
                     {events.map((event) => (
-                        <div key={event.id}>
-                            {event.summary} created by {event.creator.email}
-                        </div>
+                        <ToDoEvent key={event.id}
+                            name={event.name}
+                            duration={event.duration}
+                            duedate={event.duedate}
+                            status={event.status}
+                        />
                     ))}
                 </div>
             </ToDos>

@@ -1,8 +1,8 @@
 /**
  * ToDo page that users see once they have logged in
- * @exports ToDos
+ * @exports DTPicker
  */
-import React, {useState} from "react";
+import React from "react";
 import Datetime from "react-datetime";
 import moment from 'moment';
 import "react-datetime/css/react-datetime.css";
@@ -16,14 +16,12 @@ const inputProps = {
     readOnly: true
 }
 
-const DTPicker = ({setDueDate}) => {
-
-    const [value, setValue] = useState('')
+const DTPicker = ({setDeadline}) => {
 
     const handleChange = (value) => {
         if(typeof value == "object"){
             value = value.format("YYYY-MM-DD[T]HH:MM:SS")
-            setDueDate(value)
+            setDeadline(value)
         }
     }
 
