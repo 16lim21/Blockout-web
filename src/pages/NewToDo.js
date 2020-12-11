@@ -85,7 +85,6 @@ const NewToDo = () => {
             deadline: deadline,
         }
 
-        history.goBack()
         axios.post(process.env.REACT_APP_API_URL + "blockout/todo", data, { withCredentials: true })
             .then(response => {
                 history.goBack()
