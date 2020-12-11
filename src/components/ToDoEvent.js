@@ -34,12 +34,12 @@ const Status = styled.div`
     flex: 1 1 0;
 `
 
-const ToDoEvent = ({name, duration, duedate, status}) => {
+const ToDoEvent = ({key, name, duration, duedate, status}) => {
 
     const newDate = moment(duedate).format("ddd. M/D/YYYY, h:mm a")
 
     return (
-        <RowContainer>
+        <RowContainer key={key}>
             <EventName>{name}</EventName>
             <Duration>{duration}</Duration>
             <DueDate>{newDate}</DueDate>

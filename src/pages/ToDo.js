@@ -92,7 +92,7 @@ const ToDo = () => {
                 </RowHeaders>
                 <div>
                     {events.map((event) => (
-                        <ToDoEvent key={event.id}
+                        <ToDoEvent key={event._id}
                             name={event.name}
                             duration={event.duration}
                             duedate={event.duedate}
