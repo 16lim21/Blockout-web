@@ -26,7 +26,7 @@ const Duration = styled.div`
     flex: 1 1 0;
 `
 
-const DueDate = styled.div`
+const Deadline = styled.div`
     flex: 1 1 0;
 `
 
@@ -34,15 +34,16 @@ const Status = styled.div`
     flex: 1 1 0;
 `
 
-const ToDoEvent = ({key, name, duration, duedate, status}) => {
+const ToDoEvent = ({key, name, duration, deadline, status}) => {
 
-    const newDate = moment(duedate).format("ddd. M/D/YYYY, h:mm a")
+    console.log(deadline)
+    const newDeadline = moment(deadline).format("ddd. M/D/YYYY, h:mm a")
 
     return (
         <RowContainer key={key}>
             <EventName>{name}</EventName>
             <Duration>{duration}</Duration>
-            <DueDate>{newDate}</DueDate>
+            <Deadline>{newDeadline}</Deadline>
             <Status>{status}</Status>
         </RowContainer>
     );

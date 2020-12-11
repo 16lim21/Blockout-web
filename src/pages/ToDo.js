@@ -67,7 +67,6 @@ const ToDo = () => {
                 withCredentials: true,
             })
             .then((response) => {
-                console.log(response.data);
                 setEvents(response.data);
             })
             .catch((error) => {
@@ -95,7 +94,7 @@ const ToDo = () => {
                         <ToDoEvent key={event._id}
                             name={event.name}
                             duration={event.duration}
-                            duedate={event.duedate}
+                            deadline={event.deadline}
                             status={event.status}
                         />
                     ))}
