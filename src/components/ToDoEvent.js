@@ -5,6 +5,8 @@
 import React from "react";
 import moment from "moment";
 import styled from "styled-components";
+import axios from "axios";
+
 
 const RowContainer = styled.div`
     display: flex;
@@ -34,17 +36,33 @@ const Status = styled.div`
     flex: 1 1 0;
 `
 
-const ToDoEvent = ({key, name, duration, deadline, status}) => {
+const Delete = styled.button`
+    position: absolute;
+    right: 2rem;
+`
 
-    console.log(deadline)
+const ToDoEvent = ({name, duration, deadline, eventId}) => {
+
     const newDeadline = moment(deadline).format("ddd. M/D/YYYY, h:mm a")
+    const status = moment(deadline).isBefore(moment()) ? "Completed" : "In Progress"
+
+    const deleteToDo = () => {
+        axios
+            .delete(process.env.REACT_APP_API_URL + `blockout/todo/${eventId}`, {
+                withCredentials: true,
+            })
+            .catch((error) => {
+                console.log("Some error found" + error.message);
+            });
+    };
 
     return (
-        <RowContainer key={key}>
+        <RowContainer>
             <EventName>{name}</EventName>
             <Duration>{duration}</Duration>
             <Deadline>{newDeadline}</Deadline>
             <Status>{status}</Status>
+            <Delete onClick={deleteToDo}>Delete</Delete>
         </RowContainer>
     );
 };

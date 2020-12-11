@@ -57,6 +57,7 @@ const ToDo = () => {
     let match = useRouteMatch()
     let history = useHistory();
 
+    //Reload data on page load
     useEffect(() => {
         getData()
     }, [])
@@ -95,7 +96,7 @@ const ToDo = () => {
                             name={event.name}
                             duration={event.duration}
                             deadline={event.deadline}
-                            status={event.status}
+                            eventId={event._id}
                         />
                     ))}
                 </div>
