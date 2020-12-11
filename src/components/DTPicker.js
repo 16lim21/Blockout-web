@@ -20,8 +20,8 @@ const DTPicker = ({setDeadline}) => {
 
     const handleChange = (value) => {
         if(typeof value == "object"){
-            value = value.format("YYYY-MM-DD[T]HH:MM:SS")
-            setDeadline(value)
+            const newValue = moment.utc(value).format("YYYY-MM-DD[T]hh:mm")
+            setDeadline(newValue)
         }
     }
 
@@ -33,7 +33,8 @@ const DTPicker = ({setDeadline}) => {
     return (
         <Datetime inputProps={inputProps} 
             onChange={handleChange} 
-            isValidDate={valid}/>
+            isValidDate={valid}
+            utc={false}/>
     );
 };
 

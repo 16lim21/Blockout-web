@@ -3,6 +3,7 @@
  * @exports ToDoEvent
  */
 import React from "react";
+import moment from "moment";
 import styled from "styled-components";
 
 const RowContainer = styled.div`
@@ -35,11 +36,13 @@ const Status = styled.div`
 
 const ToDoEvent = ({name, duration, duedate, status}) => {
 
+    const newDate = moment(duedate).format("ddd. M/D/YYYY, h:mm a")
+
     return (
         <RowContainer>
             <EventName>{name}</EventName>
             <Duration>{duration}</Duration>
-            <DueDate>{duedate}</DueDate>
+            <DueDate>{newDate}</DueDate>
             <Status>{status}</Status>
         </RowContainer>
     );
