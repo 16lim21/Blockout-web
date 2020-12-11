@@ -53,7 +53,7 @@ const NewEvent = styled.button`
 `
 
 const ToDo = () => {
-    const [events, setEvents] = useState([]);
+    const [todos, setToDos] = useState([]);
     let match = useRouteMatch()
     let history = useHistory();
 
@@ -68,8 +68,20 @@ const ToDo = () => {
                 withCredentials: true,
             })
             .then((response) => {
-                setEvents(response.data);
+                setToDos(response.data);
             })
+            .catch((error) => {
+                console.log("Some error found" + error.message);
+            });
+    };
+
+    const deleteToDo = (todoId) => {
+        console.log(todoId)
+        axios
+            .delete(process.env.REACT_APP_API_URL + `blockout/todo/${todoId}`, {
+                withCredentials: true,
+            })
+            .then(() => setToDos(todos.filter(item => item._id !== todoId)))
             .catch((error) => {
                 console.log("Some error found" + error.message);
             });
@@ -91,12 +103,12 @@ const ToDo = () => {
                     <NewEvent onClick={createNewEvent}>New ToDo</NewEvent>
                 </RowHeaders>
                 <div>
-                    {events.map((event) => (
-                        <ToDoEvent key={event._id}
-                            name={event.name}
-                            duration={event.duration}
-                            deadline={event.deadline}
-                            eventId={event._id}
+                    {todos.map((todo) => (
+                        <ToDoEvent key={todo._id}
+                            name={todo.name}
+                            duration={todo.duration}
+                            deadline={todo.deadline}
+                            deleteToDo={() => deleteToDo(todo._id)}
                         />
                     ))}
                 </div>

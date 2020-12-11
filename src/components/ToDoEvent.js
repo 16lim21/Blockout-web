@@ -5,7 +5,6 @@
 import React from "react";
 import moment from "moment";
 import styled from "styled-components";
-import axios from "axios";
 
 
 const RowContainer = styled.div`
@@ -41,20 +40,10 @@ const Delete = styled.button`
     right: 2rem;
 `
 
-const ToDoEvent = ({name, duration, deadline, eventId}) => {
+const ToDoEvent = ({name, duration, deadline, deleteToDo}) => {
 
     const newDeadline = moment(deadline).format("ddd. M/D/YYYY, h:mm a")
     const status = moment(deadline).isBefore(moment()) ? "Completed" : "In Progress"
-
-    const deleteToDo = () => {
-        axios
-            .delete(process.env.REACT_APP_API_URL + `blockout/todo/${eventId}`, {
-                withCredentials: true,
-            })
-            .catch((error) => {
-                console.log("Some error found" + error.message);
-            });
-    };
 
     return (
         <RowContainer>
