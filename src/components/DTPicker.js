@@ -20,7 +20,7 @@ const DTPicker = ({setDeadline}) => {
 
     const handleChange = (value) => {
         if(typeof value == "object"){
-            const newValue = moment.utc(value).format("YYYY-MM-DD[T]hh:mm")
+            const newValue = moment.utc(value).format("YYYY-MM-DD[T]HH:mm")
             setDeadline(newValue)
         }
     }

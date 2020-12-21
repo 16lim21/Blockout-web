@@ -68,6 +68,7 @@ const ToDo = () => {
                 withCredentials: true,
             })
             .then((response) => {
+                console.log(response.data)
                 setToDos(response.data);
             })
             .catch((error) => {
